@@ -10,7 +10,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 from claude_client import ClaudeClient, SupervisorJudgment
-
+from pydantic import ValidationError
 
 VALID_JUDGMENT = {
     "assessment": "on_track",
@@ -49,7 +49,7 @@ class TestParseResponse:
 
     def test_missing_field_raises(self):
         bad = {"assessment": "on_track"}  # action, message が欠落
-        with pytest.raises(Exception):
+        with pytest.raises(ValidationError):
             ClaudeClient._parse_response(json.dumps(bad))
 
 

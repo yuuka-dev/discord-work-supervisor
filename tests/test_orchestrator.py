@@ -17,7 +17,6 @@ from orchestrator import (
 )
 from state_store import State
 
-
 JUDGMENT_ON_TRACK = SupervisorJudgment(
     assessment="on_track",
     action="continue",
